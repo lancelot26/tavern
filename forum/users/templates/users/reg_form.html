@@ -1,0 +1,15 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Registration{% endblock %}
+
+{% block content %}
+
+<h1>Registration</h1>
+
+<form action="/users/reg_form/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button>Submit</button>
+</form>
+
+{% endblock %}

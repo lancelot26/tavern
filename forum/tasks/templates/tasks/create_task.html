@@ -1,0 +1,16 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Create Task{% endblock %}
+
+{% block content %}
+
+<h1>Creating Task</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <span>{{ error }}</span>
+    <button type="submit" enctype="multipart/form-data">Submit</button>
+</form>
+
+{% endblock %}

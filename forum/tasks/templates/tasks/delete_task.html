@@ -1,0 +1,14 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Create Task{% endblock %}
+
+{% block content %}
+
+<h1>Delete Task</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+</form>
+
+{% endblock %}
