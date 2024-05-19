@@ -22,7 +22,6 @@ class Migration(migrations.Migration):
                 ('content', models.TextField()),
                 ('reward', models.CharField(default='1 gold coin')),
                 ('date', models.DateTimeField(auto_now_add=True)),
-                ('banner', models.ImageField(default='fallback.png', upload_to='')),
                 ('author', models.ForeignKey(default=None, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),

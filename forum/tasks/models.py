@@ -7,7 +7,7 @@ class Task(models.Model):
     reward = models.CharField(default='1 gold coin')
     date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
-    banner = models.ImageField(default='fallback.png', blank=False, upload_to='media')
+    banner = models.ImageField(default='fallback.png', blank=True)
 
     def __str__(self):
         return self.title

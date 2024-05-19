@@ -6,11 +6,11 @@
 
 <h1>Creating Task</h1>
 
-<form method="post">
+<form enctype="multipart/form-data" method="post">
     {% csrf_token %}
     {{ form }}
     <span>{{ error }}</span>
-    <button type="submit" enctype="multipart/form-data">Submit</button>
+    <button type="submit">Submit</button>
 </form>
 
 {% endblock %}

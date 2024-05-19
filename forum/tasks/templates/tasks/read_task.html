@@ -8,11 +8,13 @@
     {{ task.content }}<br>
     {{ task.date }}<br>
     {{ task.reward }}<br>
+
     <img
-        class="banner"
-        src="{{ task.banner.url }}"
-        alt="{{ task.title }}"
+            class="banner"
+            src="{{ task.banner.url }}"
+            alt="{{ task.title }}"
     /><br>
+
     <a href="{% url 'tasks:update_task' task.id %}">Update</a>
     <a href="{% url 'tasks:delete_task' task.id %}">Delete</a>
 {% endblock %}

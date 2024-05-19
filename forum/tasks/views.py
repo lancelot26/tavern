@@ -8,7 +8,7 @@ from .forms import TaskForm
 def create_task(request):
     error = ''
     if request.method == 'POST':
-        form = TaskForm(request.POST)
+        form = TaskForm(request.POST, request.FILES)
         if form.is_valid():
             newpost = form.save(commit=False)
             newpost.author = request.user
