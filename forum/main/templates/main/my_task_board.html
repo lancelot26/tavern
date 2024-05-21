@@ -1,0 +1,23 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}{{ user }}'s tasks{% endblock %}
+
+{% block content %}
+<h1>{{ user }}'s tasks. | <a href="{% url 'tasks:create_task' %}">Create New Task</a></h1>
+
+{% for task in tasks %}
+    <a href="{% url 'tasks:read_task' task.id %}">{{ task.title }}</a><br>
+    {{ task.content }}<br>
+    {{ task.date }}<br>
+    {{ task.reward }}<br>
+
+    <img
+            class="banner"
+            src="{{ task.banner.url }}"
+            alt="{{ task.title }}"
+    /><br>
+
+    Customer: {{ task.author }}<br><br>
+{% endfor %}
+
+{% endblock %}
