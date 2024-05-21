@@ -14,7 +14,7 @@ def create_task(request):
             newpost.author = request.user
             newpost.save()
             form.save()
-            return redirect('main:task_board')
+            return redirect('main:my_task_board')
         else:
             error = 'error'
     form = TaskForm()
@@ -29,6 +29,11 @@ class ReadTask(DetailView):
     template_name = 'tasks/read_task.html'
     context_object_name = 'task'
 
+class ReadTaskPublic(DetailView):
+    model = Task
+    template_name = 'tasks/read_task_public.html'
+    context_object_name = 'task'
+
 class UpdateTask(UpdateView):
     model = Task
     template_name = 'tasks/update_task.html'
@@ -36,5 +41,5 @@ class UpdateTask(UpdateView):
 
 class DeleteTask(DeleteView):
     model = Task
-    success_url = '/task_board/'
+    success_url = '/my_task_board/'
     template_name = 'tasks/delete_task.html'

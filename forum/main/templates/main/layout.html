@@ -10,13 +10,16 @@
 
 <a href="{% url 'main:tavern' %}">Tavern</a> |
 <a href="{% url 'main:task_board' %}">Task Board</a> |
-<a href="{% url 'main:guild_task_board' %}">Guild Task Board</a> |
+
+{% if user.is_authenticated %}
+    <a href="{% url 'main:my_task_board' %}">My Task Board</a> |
+{% endif %}
+
 <a href="{% url 'main:food_n_bar' %}">Food and Bar</a> |
 <a href="{% url 'main:inn' %}">Inn</a> |
 
 {% if user.is_authenticated %}
-    <a href="{% url 'main:communication' %}">Communication</a> |
-    <a href="{% url 'tasks:create_task' %}">Create Task</a> |
+    <a href="{% url 'main:communication' %}">Communication</a>
     <form action="{% url 'users:logout_form' %}" method="post">
         {% csrf_token %}
         <button>Logout</button>

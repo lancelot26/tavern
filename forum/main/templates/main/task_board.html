@@ -6,8 +6,12 @@
 
 <h1>Task Board</h1>
 
+<form action="{% url 'main:task_board_filter' %}" method="get">
+  <input name="q" type="text" placeholder="Search...">
+</form><br>
+
 {% for task in tasks %}
-    <a href="{% url 'tasks:read_task' task.id %}">{{ task.title }}</a><br>
+    <a href="{% url 'tasks:read_task_public' task.id %}">{{ task.title }}</a><br>
     {{ task.content }}<br>
     {{ task.date }}<br>
     {{ task.reward }}<br>
