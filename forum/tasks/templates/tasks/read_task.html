@@ -18,4 +18,27 @@
     <a href="{% url 'tasks:update_task' task.id %}">Update</a>
     <a href="{% url 'tasks:delete_task' task.id %}">Delete</a><br>
     <a href="{% url 'main:my_task_board' %}">Return to {{ user }}'s tasks</a>
+
+    <form action="" method="post">
+      {% csrf_token %}
+
+      {% if names %}
+        {% for comment in comments %}
+          {{ comment.content }}<br>
+        {% endfor %}
+      {% endif %}
+
+      {{ form }}
+      <input type="submit" value="Submit">
+    </form>
+
+<h2>Comments</h2>
+
+{% for comment in task.comments.all%}
+    <b>{{ comment.author }}</b>
+    - <span class="text-muted" style="font-size: 13px;">{{ comment.date }}</span><br>
+    {{ comment.content }}<br><br>
+
+{% endfor %}
+<p><a href="{% url 'tasks:add_comment' task.id %}">Add comment...</a></p>
 {% endblock %}

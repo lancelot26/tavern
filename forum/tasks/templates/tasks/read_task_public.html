@@ -16,4 +16,17 @@
     /><br>
 
     <a href="{% url 'main:task_board' %}">Return to task board</a>
+
+<h2>Comments</h2>
+
+{% for comment in task.comments.all%}
+    <b>{{ comment.author }}</b>
+    - <span class="text-muted" style="font-size: 13px;">{{ comment.date }}</span><br>
+    {{ comment.content }}<br><br>
+
+{% endfor %}
+
+<p><a href="{% url 'tasks:add_comment_p' task.id %}">Add comment...</a></p>
+
+
 {% endblock %}
