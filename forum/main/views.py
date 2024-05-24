@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from tasks.models import Task
+from messanger.models import Messanger
 from django.views.generic import DetailView, ListView
 from django.db.models import Q
 
@@ -15,7 +16,8 @@ def my_task_board(request):
     return render(request, 'main/my_task_board.html', {'tasks':tasks})
 
 def communication(request):
-    return render(request, 'main/communication.html')
+    messages = Messanger.objects.order_by('-date')
+    return render(request, 'main/communication.html', {'messages':messages})
 
 def food_n_bar(request):
     return render(request, 'main/food_n_bar.html')

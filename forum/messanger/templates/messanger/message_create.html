@@ -1,0 +1,16 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Add message{% endblock %}
+
+{% block content %}
+
+<h1>Add message</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <span>{{ error }}</span>
+    <button type="submit">Enter</button>
+</form>
+
+{% endblock %}

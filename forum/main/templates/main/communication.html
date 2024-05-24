@@ -6,4 +6,11 @@
 
 <h1>Communication</h1>
 
+<a href="{% url 'messanger:message_create' %}">Add message</a><br><br>
+
+{% for message in messages %}
+    {{ message.author }} - {{ message.date }}<br>
+    {{ message.content }}<br><br>
+{% endfor %}
+
 {% endblock %}

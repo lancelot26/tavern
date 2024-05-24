@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'main',
     'tasks',
     'users',
+    'messanger',
 ]
 
 MIDDLEWARE = [
