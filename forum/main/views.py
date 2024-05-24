@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from tasks.models import Task
 from messanger.models import Messanger
 from messanger.forms import MessageForm
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, DeleteView
 from django.db.models import Q
 
 def tavern(request):
@@ -38,6 +38,8 @@ def communication(request):
         'error':error
     }
     return render(request, 'main/communication.html', data)
+
+
 
 def food_n_bar(request):
     return render(request, 'main/food_n_bar.html')

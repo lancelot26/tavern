@@ -1,0 +1,16 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Update message{% endblock %}
+
+{% block content %}
+
+<h1>Are you sure you want to update the message?</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Update</button>
+</form>
+<a href="{% url 'main:communication' %}">Return back</a>
+
+{% endblock %}

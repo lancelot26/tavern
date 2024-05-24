@@ -1,0 +1,15 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Delete message{% endblock %}
+
+{% block content %}
+
+<h1>Are you sure you want to delete the message?</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+</form>
+<a href="{% url 'main:communication' %}">Return back</a>
+
+{% endblock %}

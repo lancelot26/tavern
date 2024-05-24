@@ -1,10 +1,10 @@
 {% extends 'main/layout.html' %}
 
-{% block title %}Communication{% endblock %}
+{% block title %}Chat{% endblock %}
 
 {% block content %}
 
-<h1>Communication</h1>
+<h1>Chat</h1>
 
 <form method="post">
     {% csrf_token %}
@@ -16,7 +16,12 @@
 {% if messages %}
     {% for message in messages %}
         {{ message.author }} - {{ message.date }}<br>
-        {{ message.content }}<br><br>
+        {{ message.content }}
+        <span>{{ updated }}</span>
+        {% if message.author == user %}
+            <a href="{% url 'messanger:update_message' message.id %}">Update</a>
+            <a href="{% url 'messanger:delete_message' message.id %}">Delete</a>
+        {% endif %}<br><br>
     {% endfor %}
 {% else %}
      No one message. You will be first!
