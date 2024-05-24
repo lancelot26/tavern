@@ -16,10 +16,9 @@
 {% if messages %}
     {% for message in messages %}
         {{ message.author }} - {{ message.date }}<br>
-        {{ message.content }}
-        <span>{{ updated }}</span>
+{{ message.content }}  <kek>{{ message.update_status }}</kek>
         {% if message.author == user %}
-            <a href="{% url 'messanger:update_message' message.id %}">Update</a>
+            <br><a href="{% url 'messanger:update_message' message.id %}">Update</a>
             <a href="{% url 'messanger:delete_message' message.id %}">Delete</a>
         {% endif %}<br><br>
     {% endfor %}
