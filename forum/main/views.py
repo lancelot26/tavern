@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
 from tasks.models import Task
 from messanger.models import Messanger
+from messanger.forms import MessageForm
 from django.views.generic import DetailView, ListView
 from django.db.models import Q
 
@@ -15,9 +17,27 @@ def my_task_board(request):
     tasks = Task.objects.filter(author=request.user).order_by('-date')
     return render(request, 'main/my_task_board.html', {'tasks':tasks})
 
+@login_required(login_url='/users/login_form/')
 def communication(request):
+    error =''
+    if request.method == 'POST':
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            newmessage = form.save(commit=False)
+            newmessage.author = request.user
+            newmessage.save()
+            form.save()
+            return redirect('main:communication')
+        else:
+            error = 'error'
+    form = MessageForm()
     messages = Messanger.objects.order_by('-date')
-    return render(request, 'main/communication.html', {'messages':messages})
+    data = {
+        'form':form,
+        'messages':messages,
+        'error':error
+    }
+    return render(request, 'main/communication.html', data)
 
 def food_n_bar(request):
     return render(request, 'main/food_n_bar.html')

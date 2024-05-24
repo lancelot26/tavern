@@ -6,11 +6,19 @@
 
 <h1>Communication</h1>
 
-<a href="{% url 'messanger:message_create' %}">Add message</a><br><br>
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <span>{{ error }}</span>
+    <button type="submit">Enter message</button>
+</form><br>
 
-{% for message in messages %}
-    {{ message.author }} - {{ message.date }}<br>
-    {{ message.content }}<br><br>
-{% endfor %}
-
+{% if messages %}
+    {% for message in messages %}
+        {{ message.author }} - {{ message.date }}<br>
+        {{ message.content }}<br><br>
+    {% endfor %}
+{% else %}
+     No one message. You will be first!
+{% endif %}
 {% endblock %}
