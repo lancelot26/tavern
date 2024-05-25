@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import DetailView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
 from .models import Task, Comment
-from .forms import TaskForm, CommentForm
+from .forms import TaskForm, CommentForm, UpdateTaskForm
 from django.shortcuts import get_object_or_404
 
 @login_required(login_url='/users/login_form/')
@@ -70,7 +70,10 @@ class ReadTaskPublic(DetailView):
 class UpdateTask(UpdateView):
     model = Task
     template_name = 'tasks/update_task.html'
-    form_class = TaskForm
+    form_class = UpdateTaskForm
+
+    def get_initial(self):
+        return {'updated_task':'(updated)'}
 
 class DeleteTask(DeleteView):
     model = Task

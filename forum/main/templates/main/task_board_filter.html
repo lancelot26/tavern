@@ -11,7 +11,7 @@
 </form><br>
 {% if object_list %}
     {% for task in object_list %}
-        <a href="{% url 'tasks:read_task_public' task.id %}">{{ task.title }}</a><br>
+        <a href="{% url 'tasks:read_task_public' task.id %}">{{ task.title }}</a> {{ task.updated_task }}<br>
         {{ task.content }}<br>
         {{ task.date }}<br>
         {{ task.reward }}<br>

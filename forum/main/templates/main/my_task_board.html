@@ -6,7 +6,7 @@
 <h1>{{ user }}'s tasks. | <a href="{% url 'tasks:create_task' %}">Create New Task</a></h1>
 
 {% for task in tasks %}
-    <a href="{% url 'tasks:read_task' task.id %}">{{ task.title }}</a><br>
+    <a href="{% url 'tasks:read_task' task.id %}">{{ task.title }}</a> {{ task.updated_task }}<br>
     {{ task.content }}<br>
     {{ task.date }}<br>
     {{ task.reward }}<br>

@@ -9,6 +9,7 @@ class Task(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
     banner = models.ImageField(default='fallback.png', blank=True)
     author_name = models.CharField(max_length=150, default='')
+    updated_task = models.CharField(max_length=9, default='')
 
     def __str__(self):
         return self.title
