@@ -6,6 +6,7 @@ class TaskForm(ModelForm):
         model = Task
         fields = ['title','content','reward', 'banner']
 
+
 class CommentForm(ModelForm):
     class Meta:
         model = Comment

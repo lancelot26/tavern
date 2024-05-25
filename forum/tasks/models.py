@@ -8,6 +8,7 @@ class Task(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
     banner = models.ImageField(default='fallback.png', blank=True)
+    author_name = models.CharField(max_length=150, default='')
 
     def __str__(self):
         return self.title

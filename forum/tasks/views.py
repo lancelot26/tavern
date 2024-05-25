@@ -13,6 +13,7 @@ def create_task(request):
         if form.is_valid():
             newpost = form.save(commit=False)
             newpost.author = request.user
+            newpost.author_name = str(newpost.author)
             newpost.save()
             form.save()
             return redirect('main:my_task_board')

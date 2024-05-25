@@ -5,6 +5,7 @@ class MessageForm(ModelForm):
     class Meta:
         model = Messanger
         fields = ['content']
+
 class MessageUpdateForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

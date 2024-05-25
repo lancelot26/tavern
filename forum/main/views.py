@@ -53,6 +53,7 @@ class TaskBoardFilter(ListView):
     def get_queryset(self):
         query = self.request.GET.get('q')
         object_list = Task.objects.filter(
-            Q(title__icontains=query) | Q(content__icontains=query) | Q(reward__icontains=query)
+            Q(title__icontains=query) | Q(content__icontains=query) | Q(reward__icontains=query) |
+            Q(author_name=query)
         )
         return object_list
